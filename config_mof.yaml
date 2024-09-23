@@ -1,0 +1,45 @@
+batch_size: 64                 # batch size
+epochs: 50                     # total number of epochs
+eval_every_n_epochs: 1          # validation frequency
+log_every_n_steps: 500         # print training log frequency
+init_lr: 0.0005                 # initial learning rate for the prediction head
+weight_decay: 0.0001            # weight decay of Adam
+gpu: cuda:0                     # training GPU
+label_normalize: False
+
+out_dimention: 5              
+repeat: 1
+model: MPNN
+metal_list: None
+
+data:
+  num_workers: 0
+  valid_size: 0.1
+  test_size: 0.1
+  database: 'QMOF'
+  label_index: 0            
+
+path:
+  root: './Dataset/MOF/'
+  CoREMOF: './Dataset/MOF/CoREMOF/'
+  hMOF: './Dataset/MOF/hMOF-10/'
+  QMOF: './Dataset/MOF/QMOF/relaxed_structures/'
+  metal_level: './Dataset/Data/PubChemElements_all.csv'
+
+experiment:
+  name: ''
+  path: 'experiment/test'
+
+GNN:
+  num_layer: 5                 
+  in_channels: 4
+  edge_dim: 0
+  hidden_channels: 256
+  drop_ratio: 0
+  pool: 'mean'
+  apool: 16
+  interprate: False
+  mp: 1
+
+Heter:
+  conv: 'MPNN'
